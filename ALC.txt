@@ -1,0 +1,8 @@
+﻿CORE(config)#ip access-list standard hita
+CORE(config-std-nacl)#deny 192.168.1.0 0.0.0.255
+CORE(config-std-nacl)#permit any
+CORE(config-std-nacl)#exit
+CORE(config)#ip nat inside source list hita int g0/1 overload 
+CORE(config)#int g0/1
+CORE(config-if)#ip access-group hita out
+CORE(config-if)#exit

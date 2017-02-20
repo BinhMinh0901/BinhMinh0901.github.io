@@ -1,0 +1,40 @@
+CREATE DATABASE	QLSV
+GO
+
+CREATE TABLE Khoa
+(
+	Makhoa varchar(10) NOT NULL PRIMARY KEY,
+	Tenkhoa Nvarchar(100) NOT NULL
+)
+GO
+
+CREATE TABLE Sinhvien
+(
+	Masv varchar(10) NOT NULL PRIMARY KEY,
+	Hoten Nvarchar(100) NOT NULL,
+	Ngaysinh datetime,
+	Gioitinh Nvarchar(10),
+	Makhoa varchar(10) FOREIGN KEY REFERENCES Khoa(Makhoa) ,
+	Namnhaphoc datetime
+)
+GO
+
+CREATE TABLE Monhoc
+(
+	Mamon varchar(10) NOT NULL PRIMARY KEY,
+	Tenmon Nvarchar(50) NOT NULL,
+	Sotinchi int
+)
+GO
+
+CREATE TABLE diem
+(
+	Masv varchar(10) FOREIGN KEY REFERENCES Sinhvien(Masv),
+	Mamon varchar(10) FOREIGN KEY REFERENCES Monhoc(Mamon),
+	Hocky varchar(5),
+	Diemgiuahocky int,
+	Diemlan1 int,
+	Diemlan2 int,
+	PRIMARY KEY (Masv,Mamon)
+)
+GO

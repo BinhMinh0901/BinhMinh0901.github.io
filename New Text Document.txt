@@ -1,0 +1,28 @@
+--2
+
+create function F_NamnhapHoc(@nam int)
+returns table
+as
+begin
+return (select MaSV,HoTen,NgaySinh )
+from SinhVien
+where year (NgaySinh) =@namsinh)
+end
+
+select *from F_namnhaphoc(1997) 
+
+---3
+create function F_TenKhoa (@tenkhoa int)
+returns table
+as
+begin
+return (select MaSV,HoTen,NgaySinh
+from SinhVien
+where sinhvien.makhoa = khoa.makhoa and khoa.tenkhoa = @tenkhoa)
+end
+
+select *from F_namnhaphoc(1997) 
+
+
+
+----4
